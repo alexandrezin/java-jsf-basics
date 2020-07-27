@@ -18,39 +18,11 @@
 	<h:body>
 		<h:form>
 				<h4 align="left">
-				
-					First Name 
-						<h:inputText id="firstname" value="#{user.firstName}" label="First Name" required="true" requiredMessage="Please, inform your first name" validator="#{user.validateName}" validatorMessage="Please inform a valid Name"/>
-						<h:message for="firstname" styleClass="error" />
-						<br/>
-						
-					Last Name
-						<h:inputText id="lastname" value="#{user.lastName}" label="Last Name" required="true" requiredMessage="Please, inform your last name" validator="#{user.validateName}" validatorMessage="Please inform a valid Name"/>
-						<h:message for="lastname" styleClass="error" />
-						<br/>
-						
-					Email Address
-						<h:inputText id="email" value="#{user.email}" label="email" required="true" requiredMessage="Please, inform your email" validatorMessage="Please, inform a valid email address">
-							<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
-						</h:inputText>
-						<h:message for="email" styleClass="error" />
-						<br/>
-						
-					CPF:
-						<h:inputText id="cpf" value="#{user.cpf}" label="CPF" required="true" requiredMessage="Please, inform your CPF" validatorMessage="CPF format must be XXX.XXX.XXX-XX">
-							<f:validateRegex pattern="\d{3}.\d{3}.\d{3}-\d{2}"/>
-						</h:inputText>
-						<h:message for="cpf" styleClass="error"/>
-						<br/>
-					
-					Theme:
-						<h:selectOneMenu id="selectTheme" label="Theme" value="#{user.theme}">
-							<f:selectItems value="#{user.themeType}"/>
-						</h:selectOneMenu>
-					
-					<br/>
-					<h:commandButton value="Sign In" action="#{user.signinPageNavigation()}"/>
-					
+					<ui:repeat var="tempUser" value="#{userDataUtil.userList}">
+						<li>
+							#{tempUser.firstName} #{tempUser.lastName} (#{tempUser.email})
+						</li>
+					</ui:repeat>
 				</h4>
 		</h:form>
 	</h:body>
