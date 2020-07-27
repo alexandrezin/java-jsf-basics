@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+	<h:head>
+		<title>
+			Sign In - CCP
+		</title>
+		<style>
+			.error {color:red;
+					font-size:80%;}
+		</style>
+	</h:head>
+	<h:body>
+		<h:form>
+				<h4 align="left">
+				
+					First Name 
+						<h:inputText id="firstname" value="#{user.firstName}" label="First Name" required="true" requiredMessage="Please, inform your first name" validator="#{user.validateName}" validatorMessage="Please inform a valid Name"/>
+						<h:message for="firstname" styleClass="error" />
+						<br/>
+						
+					Last Name
+						<h:inputText id="lastname" value="#{user.lastName}" label="Last Name" required="true" requiredMessage="Please, inform your last name" validator="#{user.validateName}" validatorMessage="Please inform a valid Name"/>
+						<h:message for="lastname" styleClass="error" />
+						<br/>
+						
+					Email Address
+						<h:inputText id="email" value="#{user.email}" label="email" required="true" requiredMessage="Please, inform your email" validatorMessage="Please, inform a valid email address">
+							<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]"/>
+						</h:inputText>
+						<h:message for="email" styleClass="error" />
+						<br/>
+						
+					CPF:
+						<h:inputText id="cpf" value="#{user.cpf}" label="CPF" required="true" requiredMessage="Please, inform your CPF" validatorMessage="CPF format must be XXX.XXX.XXX-XX">
+							<f:validateRegex pattern="\d{3}.\d{3}.\d{3}-\d{2}"/>
+						</h:inputText>
+						<h:message for="cpf" styleClass="error"/>
+						<br/>
+						
+					<br/>
+					<h:commandButton value="Sign In" action="confirmationPage"/>
+					
+				</h4>
+		</h:form>
+	</h:body>
+</html>
