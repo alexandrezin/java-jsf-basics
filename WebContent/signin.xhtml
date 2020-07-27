@@ -42,9 +42,14 @@
 						</h:inputText>
 						<h:message for="cpf" styleClass="error"/>
 						<br/>
-						
+					
+					Theme:
+						<h:selectOneMenu id="selectTheme" label="Theme" value="#{user.theme}">
+							<f:selectItems value="#{user.themeType}"/>
+						</h:selectOneMenu>
+					
 					<br/>
-					<h:commandButton value="Sign In" action="confirmationPage"/>
+					<h:commandButton value="Sign In" action="#{user.signinPageNavigation()}"/>
 					
 				</h4>
 		</h:form>
