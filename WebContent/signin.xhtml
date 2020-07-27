@@ -18,11 +18,26 @@
 	<h:body>
 		<h:form>
 				<h4 align="left">
-					<ui:repeat var="tempUser" value="#{userDataUtil.userList}">
-						<li>
-							#{tempUser.firstName} #{tempUser.lastName} (#{tempUser.email})
-						</li>
-					</ui:repeat>
+					<h:dataTable var="tempUser" value="#{userDataUtil.userList}" border="1">
+						<h:column>
+							<f:facet name="header">
+								First name
+							</f:facet>
+							#{tempUser.firstName}
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								Last Name
+							</f:facet>
+							#{tempUser.lastName}
+						</h:column>
+						<h:column>
+							<f:facet name="header">
+								Email
+							</f:facet>
+							#{tempUser.email}
+						</h:column>
+					</h:dataTable>
 				</h4>
 		</h:form>
 	</h:body>
